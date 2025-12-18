@@ -1,0 +1,42 @@
+@Metadata.layer: #CORE
+annotate entity YC_SUSH_TRAVEL
+    with 
+{
+   @UI.selectionField: [{position: 10  }]
+   TravelUuid;
+   @UI.selectionField: [{position: 20  }]
+   @UI.lineItem: [{ position: 20 }]
+   TravelId;
+   @UI.selectionField: [{position: 30  }]
+   @UI.lineItem: [{ position: 30 }]
+   AgencyId;
+   @UI.lineItem: [{ position: 40 }]
+   CustomerId;
+   @UI.lineItem: [{ position: 50 }]
+   BeginDate;
+   @UI.lineItem: [{ position: 60 }]
+   EndDate;
+   @UI.lineItem: [{ position: 70 }]
+   BookingFee;
+   @UI.lineItem: [{ position: 80 }]
+   TotalPrice;
+   @UI.lineItem: [{ position: 90 }]
+   CurrencyCode;
+   @UI.lineItem: [{ position: 100 }]
+   Description;
+   @UI.lineItem: [{ position: 110 }]
+   OverallStatus;
+   @UI.lineItem: [{ position: 120 }]
+   CreatedBy;
+   @UI.lineItem: [{ position: 130 }]
+   CreatedAt;
+   @UI.lineItem: [{ position: 140 }]
+   LastChangedBy;
+    @UI.lineItem: [{ position: 150 }]
+   LastChangedAt;
+    @UI.lineItem: [{ position: 160 }]
+   LocalLastChangedAt;
+   /* Associations */
+//   _Booking;
+    
+}

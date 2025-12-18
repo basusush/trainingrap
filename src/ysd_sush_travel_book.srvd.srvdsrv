@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition'
+define service YSD_SUSH_TRAVEL_BOOK {
+  expose YC_SUSH_TRAVEL;
+  expose YC_SUSH_BOOKING;
+}
