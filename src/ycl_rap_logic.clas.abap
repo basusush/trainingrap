@@ -27,12 +27,18 @@ CLASS ycl_rap_logic IMPLEMENTATION.
 
      if Travel_keys is not INITIAL.
        travel_read_import = CORRESPONDING #( Travel_keys ).
+       LOOP AT travel_read_import ASSIGNING FIELD-SYMBOL(<LFS_TRAVELUUID>).
+         DATA(LV_TRAVELUUID) = <LFS_TRAVELUUID>-TravelUuid.
+       ENDLOOP.
      endif.
 
      READ ENTITIES OF yi_cds_sush_travel
      ENTITY Travel
      ALL FIELDS WITH travel_read_import
-     RESULT data(travel).
+     RESULT data(travel)
+     ENTITY Travel BY \_Booking
+     ALL FIELDS WITH VALUE #( ( %key-TravelUuid = LV_TRAVELUUID  ) )
+     RESULT data(booking).
 
      data: lv_begin type d,
            lv_enddate type d.
@@ -50,6 +56,14 @@ CLASS ycl_rap_logic IMPLEMENTATION.
 
      FAILED data(failed_data)
      REPORTED data(reported_data).
+
+*     MODIFY ENTITIES OF yi_cds_sush_travel
+*     ENTITY Booking
+*     UPDATE FIELDS ( FlightPrice )
+*     WITH VALUE #( For row IN booking (
+*                      %tky = row-%tky
+*                      FlightPrice =  ) )
+
 
      READ ENTITIES OF yi_cds_sush_travel
      ENTITY Travel
