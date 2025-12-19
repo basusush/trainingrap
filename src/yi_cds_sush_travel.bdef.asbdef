@@ -4,15 +4,36 @@ strict ( 2 );
 define behavior for YI_CDS_SUSH_TRAVEL alias Travel
 persistent table ysush_travel
 lock master
-authorization master ( instance )
+authorization master ( global )
 //etag master <field_name>
+
 {
   create ( authorization : global );
   update;
   delete;
-  field ( readonly ) TravelUuid;
+  field ( readonly , numbering : managed ) TravelUuid;
+    mapping for ysush_travel{
+     TravelUuid = travel_uuid;
+     TravelId   = travel_id;
+     AgencyId   = agency_id;
+     CustomerId = customer_id;
+     BeginDate  = begin_date;
+     EndDate    = end_date;
+     BookingFee = booking_fee;
+     TotalPrice = total_price;
+     CurrencyCode = currency_code;
+     Description = description;
+     OverallStatus = overall_status;
+     CreatedBy = created_by;
+     CreatedAt = created_at;
+     LastChangedBy = last_changed_by;
+     LastChangedAt = last_changed_at;
+     LocalLastChangedAt = local_last_changed_at;
+   }
   association _Booking { create; }
+
 }
+
 
 define behavior for YI_CDS_SUSH_booking alias Booking
 persistent table ysush_booking
@@ -22,7 +43,7 @@ authorization dependent by _Travel
 {
   update;
   delete;
-  field ( readonly ) BookingUuid;
+  field ( readonly , numbering : managed) BookingUuid;
   field ( readonly ) TravelUuid;
   association _Travel;
 }

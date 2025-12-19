@@ -1,0 +1,5 @@
+CLASS zbp_i_cds_sush_travel DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF yi_cds_sush_travel.
+ENDCLASS.
+
+CLASS zbp_i_cds_sush_travel IMPLEMENTATION.
+ENDCLASS.

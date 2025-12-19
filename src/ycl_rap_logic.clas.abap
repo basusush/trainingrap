@@ -1,10 +1,14 @@
 CLASS ycl_rap_logic DEFINITION
   PUBLIC
   FINAL
+*  INHERITING FROM cl_abap_behavior_handler.
+
   CREATE PUBLIC .
 
   PUBLIC SECTION.
-   INTERFACES if_oo_adt_classrun.
+
+
+  INTERFACES if_oo_adt_classrun.
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
@@ -12,7 +16,9 @@ ENDCLASS.
 
 
 CLASS ycl_rap_logic IMPLEMENTATION.
-  METHOD if_oo_adt_classrun~main.
+
+
+   METHOD if_oo_adt_classrun~main.
 
      data:travel_read_import type TABLE FOR READ IMPORT yi_cds_sush_travel.
      select from yi_cds_sush_travel
@@ -51,6 +57,7 @@ CLASS ycl_rap_logic IMPLEMENTATION.
      with VALUE #( FOR row in travel ( %tky = row-%tky ) )
      result DATA(test_result) .
 
+     out->write( test_result  ).
 
   ENDMETHOD.
 ENDCLASS.
