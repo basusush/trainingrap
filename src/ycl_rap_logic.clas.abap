@@ -71,7 +71,24 @@ CLASS ycl_rap_logic IMPLEMENTATION.
      with VALUE #( FOR row in travel ( %tky = row-%tky ) )
      result DATA(test_result) .
 
-     out->write( test_result  ).
+     MODIFY ENTITIES OF yi_cds_sush_travel
+     ENTITY Travel
+     CREATE FIELDS ( TravelId Description )
+     WITH VALUE #( ( %cid = 'sush_record1'
+                       %data = VALUE #( TravelId = '216'
+                                         Description = 'desc2' ) ) )
+     MAPPED DATA(lt_create_data)
+     FAILED data(lt_failed).
+*     out->write( test_result  ).
+
+     if lt_failed is initial.
+      commit ENTITIES.
+     else.
+      ROLLBACK ENTITIES.
+     ENDIF.
+
+
+     out->write( lt_create_data  ).
 
   ENDMETHOD.
 ENDCLASS.
