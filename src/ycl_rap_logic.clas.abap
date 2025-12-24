@@ -76,7 +76,17 @@ CLASS ycl_rap_logic IMPLEMENTATION.
      CREATE FIELDS ( TravelId Description )
      WITH VALUE #( ( %cid = 'sush_record1'
                        %data = VALUE #( TravelId = '216'
-                                         Description = 'desc2' ) ) )
+                                         Description = 'desc2' ) )
+                     ( %cid = 'sush_record2'
+                       %data = VALUE #( TravelId = '299'
+                                        Description = 'desc3' ) ) )
+     CREATE BY \_Booking
+     FIELDS ( BookingId CustomerId )
+     WITH VALUE #( ( %cid_ref = 'sush_record2'
+                     %target = VALUE #( ( %cid = 'Booking1'
+                                          BookingId = '878'
+                                          CustomerId = '56' ) ) ) )
+
      MAPPED DATA(lt_create_data)
      FAILED data(lt_failed).
 *     out->write( test_result  ).

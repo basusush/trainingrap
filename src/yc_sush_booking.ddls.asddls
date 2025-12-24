@@ -13,6 +13,7 @@ as projection on YI_CDS_SUSH_booking
 
 {
     key BookingUuid,
+    key TravelId,
     TravelUuid,
     BookingId,
     BookingDate,

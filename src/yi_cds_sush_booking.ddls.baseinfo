@@ -3,6 +3,7 @@
 {
 "FROM":
 [
+"YI_CDS_SUSH_TRAVEL",
 "YSUSH_BOOKING"
 ],
 "ASSOCIATED":

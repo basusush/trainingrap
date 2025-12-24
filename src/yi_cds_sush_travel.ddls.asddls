@@ -3,16 +3,11 @@
 @EndUserText.label: 'Travel related information'
 @Metadata.ignorePropagatedAnnotations: true
 @Metadata.allowExtensions: true
-@ObjectModel.usageType:{
-    serviceQuality: #X,
-    sizeCategory: #S,
-    dataClass: #MIXED
-}
+
 define root view entity YI_CDS_SUSH_TRAVEL 
 as select from ysush_travel
-composition[1..*] of YI_CDS_SUSH_booking as _Booking 
-    
- {
+composition[1..*] of YI_CDS_SUSH_booking as _Booking
+{
     key travel_uuid as TravelUuid,
     travel_id as TravelId,
     agency_id as AgencyId,

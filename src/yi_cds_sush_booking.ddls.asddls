@@ -13,6 +13,7 @@ association to parent YI_CDS_SUSH_TRAVEL as _Travel
  on $projection.TravelUuid = _Travel.TravelUuid
 {
     key booking_uuid as BookingUuid,
+    key _Travel.TravelId as TravelId,
     travel_uuid as TravelUuid,
     booking_id as BookingId,
     booking_date as BookingDate,
